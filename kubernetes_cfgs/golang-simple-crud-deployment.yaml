@@ -38,7 +38,7 @@ spec:
               value: example
             - name: MONGODB_USERNAME
               value: root
-          image: golang_simple_crud:latest
+          image: golang_simple_crud:local
           name: golang-simple-crud
           ports:
             - containerPort: 80
