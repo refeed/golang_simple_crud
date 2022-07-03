@@ -6,7 +6,6 @@ import (
 	"golangSimpleCrud/models"
 
 	"github.com/gin-gonic/gin"
-	"github.com/gin-gonic/gin/binding"
 	"go.mongodb.org/mongo-driver/mongo"
 )
 
@@ -39,8 +38,7 @@ func (u *UserController) GetOne(ctx *gin.Context) {
 
 func (u *UserController) Create(ctx *gin.Context) {
 	var createUserForm contracts.CreateUserReq
-	if err := ctx.MustBindWith(&createUserForm, binding.JSON); err != nil {
-		ctx.JSON(400, gin.H{"error": err.Error()})
+	if err := ctx.BindJSON(&createUserForm); err != nil {
 		return
 	}
 
@@ -100,7 +98,24 @@ func (u *UserController) Delete(ctx *gin.Context) {
 }
 
 func (u *UserController) GetMe(ctx *gin.Context) {
-	ctx.JSON(200, gin.H{
-		"message": "Hello World",
-	})
+	username := ctx.MustGet("username").(string)
+
+	user, err := models.GetUserById(username)
+
+	if errors.Is(err, mongo.ErrNoDocuments) {
+		// This only makes sense when an admin deleted the user while the user's
+		// JWT token is still valid
+		ctx.JSON(404, gin.H{"error": "User not found"})
+		return
+	}
+	if err != nil {
+		ctx.JSON(500, gin.H{"error": err.Error()})
+		return
+	}
+	getUserRes := contracts.GetUserRes{
+		Name:     user.Name,
+		Role:     user.Role,
+		Username: user.Username,
+	}
+	ctx.JSON(200, getUserRes)
 }

@@ -49,8 +49,8 @@ func GetAllUsers() []contracts.GetUserRes {
 	return users
 }
 
-func GetUserById(id string) (contracts.GetUserRes, error) {
-	var user contracts.GetUserRes
+func GetUserById(id string) (User, error) {
+	var user User
 	ctx := context.TODO()
 	err := GetUserCollection().FindOne(ctx, bson.M{"_id": id}).Decode(&user)
 	return user, err
@@ -88,4 +88,13 @@ func UpdateUser(id string, updateUserForm contracts.UpdateUserReq) error {
 
 	_, err := GetUserCollection().UpdateOne(ctx, bson.M{"_id": id}, bson.M{"$set": newUser})
 	return err
+}
+
+func IsUserPasswordMatch(username string, password string) bool {
+	user, err := GetUserById(username)
+	if err != nil {
+		log.Fatalf("IsUserPasswordMatch(): %v", err.Error())
+		return false
+	}
+	return user.PasswordHash == auth.HashPassword(password)
 }
