@@ -18,3 +18,5 @@ Info Test BE
 - [ ] Bikin dokumentasi API nya (Postman atau Swagger) yang bisa diakses ke server Rest API nya.
 - [ ] Bikin diagram arstektur nya yang menjelaskan flow API CRUD dan Login.
 - [ ] Lampirkan credential Admin di Readme.
+
+Next: Add UserModel
