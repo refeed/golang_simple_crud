@@ -1,4 +1,4 @@
-FROM golang:1.16-alpine
+FROM golang:1.18-alpine
 
 LABEL maintainer="Rafid Aslam"
 
@@ -16,5 +16,13 @@ EXPOSE 80
 
 ENV PORT 80
 env GIN_MODE release
+
+# The following env vars can be set:
+#
+# env MONGODB_HOST "mongo"
+# env MONGODB_USERNAME "root"
+# env MONGODB_PASSWORD "example"
+# env JWT_SECRET_KEY "verysecret12345"
+# env JWT_ISSUER "golangSimpleCrud"
 
 CMD [ "/golangSimpleCrudServer" ]

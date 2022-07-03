@@ -2,9 +2,39 @@ version: '3.1'
 
 services:
   mongo:
-    image: mongo
+    image: mongo:5.0.9
     environment:
       MONGO_INITDB_ROOT_USERNAME: root
       MONGO_INITDB_ROOT_PASSWORD: example
     ports:
       - "27017:27017"
+    volumes:
+      - mongodb_data_volume:/data/db
+    networks:
+     - backend
+
+  golang_simple_crud:
+    image: golang_simple_crud:latest
+    build:
+      context: .
+      dockerfile: Dockerfile
+    environment:
+      MONGODB_HOST: "mongo"
+      MONGODB_USERNAME: "root"
+      MONGODB_PASSWORD: "example"
+      JWT_SECRET_KEY: "verysecret12345"
+      JWT_ISSUER: "golangSimpleCrud"
+      GIN_MODE: "debug"
+    ports:
+      - "80:80"
+    networks:
+     - backend
+
+
+networks:
+  backend:
+    driver: bridge
+
+volumes:
+  mongodb_data_volume:
+    driver: local
