@@ -1,14 +1,15 @@
 package services
 
 import (
+	"golangSimpleCrud/lib"
 	"time"
 
 	"github.com/golang-jwt/jwt"
 )
 
-const (
-	SECRET_KEY = "SECRETKEY" // TODO: Read from env
-	ISSUER     = "golang-jwt"
+var (
+	SECRET_KEY = lib.GetEnvOrDefault("JWT_SECRET_KEY", "verysecret")
+	ISSUER     = lib.GetEnvOrDefault("JWT_ISSUER", "golang-jwt")
 )
 
 type authCustomClaims struct {
