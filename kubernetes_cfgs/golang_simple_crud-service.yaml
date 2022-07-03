@@ -7,7 +7,7 @@ metadata:
   creationTimestamp: null
   labels:
     io.kompose.service: golang-simple-crud
-  name: golang_simple_crud
+  name: golang-simple-crud
 spec:
   ports:
     - name: "80"
