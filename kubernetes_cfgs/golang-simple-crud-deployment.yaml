@@ -39,6 +39,7 @@ spec:
             - name: MONGODB_USERNAME
               value: root
           image: golang_simple_crud:local
+          imagePullPolicy: Never
           name: golang-simple-crud
           ports:
             - containerPort: 80
