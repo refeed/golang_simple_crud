@@ -30,7 +30,7 @@ func GetAllUsers() []contracts.GetUserRes {
 	opts := options.Find().SetProjection(bson.M{"passwordHash": 0})
 	cur, err := GetUserCollection().Find(ctx, bson.M{}, opts)
 	if err != nil {
-		log.Fatalln(err.Error())
+		log.Println(err.Error())
 	}
 	defer cur.Close(ctx)
 
@@ -40,7 +40,7 @@ func GetAllUsers() []contracts.GetUserRes {
 
 		err := cur.Decode(&user)
 		if err != nil {
-			log.Fatalln(err.Error())
+			log.Println(err.Error())
 		}
 
 		users = append(users, user)
@@ -93,7 +93,7 @@ func UpdateUser(id string, updateUserForm contracts.UpdateUserReq) error {
 func IsUserPasswordMatch(username string, password string) bool {
 	user, err := GetUserById(username)
 	if err != nil {
-		log.Fatalf("IsUserPasswordMatch(): %v", err.Error())
+		log.Printf("IsUserPasswordMatch(): %v", err.Error())
 		return false
 	}
 	return user.PasswordHash == auth.HashPassword(password)
