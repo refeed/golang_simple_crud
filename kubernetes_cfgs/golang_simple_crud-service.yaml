@@ -9,6 +9,7 @@ metadata:
     io.kompose.service: golang-simple-crud
   name: golang-simple-crud
 spec:
+  type: NodePort
   ports:
     - name: "80"
       port: 80
