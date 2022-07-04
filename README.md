@@ -20,3 +20,16 @@ Info Test BE
 - [ ] Lampirkan credential Admin di Readme.
 
 Next: Add UserModel
+
+## User credential
+
+username: admin
+password: secret
+
+username: user
+password: secret
+
+## Documentation
+
+- API docs is available at `golang_simple_crud.postman_collection.json` in this repo
+- Diagram is available at `testBackend.drawio` and `testBackend.drawio.pdf` for the pdf version
