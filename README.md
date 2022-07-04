@@ -23,6 +23,8 @@ Next: Add UserModel
 
 ## User credential
 
+BASE_URL: http://103.171.84.154:30183
+
 username: admin
 password: secret
 
