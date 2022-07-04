@@ -14,10 +14,10 @@ Info Test BE
 - [x] User Login digunakan user (username, password) untuk mengakses API CRUD (token, tetapi mendapatkan nilai tambahan jika menggunakan refresh token).
 - [x] Bikin 2 users dengan role: 1 Admin, 1 User.
 - [x] Admin bisa melakukan/mengakses semua API CRUD, sedangkan User hanya bisa mengakses data user bersangkutan saja (Read)
-- [ ] Implementasi arstektur Microservices, menggunakan Kubernetes dengan Docker container deploy di VPS (1 node dengan beberapa pod di dalamnya). Bagi yang belum memiliki VPS, maka cukup (a) menyiapkan semua YML agar aplikasi bisa dijalankan secara containerize dan siap di deploy di Kubernetes dan (b) di-deploy di lokal dan sertakan screenshoot.
-- [ ] Bikin dokumentasi API nya (Postman atau Swagger) yang bisa diakses ke server Rest API nya.
-- [ ] Bikin diagram arstektur nya yang menjelaskan flow API CRUD dan Login.
-- [ ] Lampirkan credential Admin di Readme.
+- [x] Implementasi arstektur Microservices, menggunakan Kubernetes dengan Docker container deploy di VPS (1 node dengan beberapa pod di dalamnya). Bagi yang belum memiliki VPS, maka cukup (a) menyiapkan semua YML agar aplikasi bisa dijalankan secara containerize dan siap di deploy di Kubernetes dan (b) di-deploy di lokal dan sertakan screenshoot.
+- [x] Bikin dokumentasi API nya (Postman atau Swagger) yang bisa diakses ke server Rest API nya.
+- [x] Bikin diagram arstektur nya yang menjelaskan flow API CRUD dan Login.
+- [x] Lampirkan credential Admin di Readme.
 
 Next: Add UserModel
 
